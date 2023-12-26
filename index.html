@@ -62,6 +62,21 @@ const chords = {
 	Ammaj7:		[0, 3, 7, 11], 
 }
 
+const colors = [
+	0, //red
+	20,	//red-orange
+	35, // orange
+	48, // yellow-orange
+	60, // yellow
+	80, // yellow-green
+	120, // green
+	170, // blue-green
+	200, // blue
+	255, // blue-purple
+	275, // purple
+	300 // red-purple
+]
+
 let currentChord = 0;
 
 function playNote(note, pipe) {
@@ -81,7 +96,7 @@ function drawScreen() {
 	ctx.font = "30px Arial";
 	ctx.fillText(Object.keys(chords)[currentChord], 10, 50);
 
-    drawColorWheel([200, 500], 1)
+    	drawColorWheel([200, 500], 1)
 	drawColorWheel([800, 500], 5)
 
 	chord = Object.values(chords)[currentChord]
@@ -92,15 +107,13 @@ function drawScreen() {
 	currentChord++
 }
 
-
-
-
 function drawColorWheel(center, multiplier) {
 	for (i = 0; i < TET; i++) {
 		let pos = getPointOnCircle(center, i, 150)
-		var color = 360*multiplier*i/TET 
+		var color = 360*multiplier*i/TET
 		
-		drawCircle(pos, color + (i == 3 ? -15 : (i == 5 ? 15 : 0)))
+		drawCircle(pos, color)
+		//drawCircle(pos, color + (i == 3 ? -15 : (i == 5 ? 15 : 0)))
 	}
 }
 
